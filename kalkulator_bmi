@@ -1,0 +1,39 @@
+def pobierz_dane(prompt):
+    while True:
+        try:
+            val = float(input(prompt))
+            if val < 0:
+                raise ValueError("Wprowadzona wartość nie może być ujemna.")
+            return val
+        except ValueError as ve:
+            print("Niepoprawna wartość, spróbuj ponownie. Błąd: ", ve)
+
+
+masa_ciała =  pobierz_dane("Podaj mase ciała w kg ")
+wzrost_cm = pobierz_dane("Podaj wzrost w cm ")
+wzrost_m = wzrost_cm / 100
+
+
+
+def bmi():
+    bmi = masa_ciała / (wzrost_m **2)
+    return bmi
+
+def sprawdz (wynik_bmi):
+    if wynik_bmi < 18.5:
+        print(f"Posiadasz Niedowage")
+        print(f"Twoje bmi wynosi" , wynik_bmi)
+    elif wynik_bmi  >= 18.5  and wynik_bmi <=24.9:
+        print(f"Twoja waga jest prawidłowa")
+        print(f"Twoje bmi wynosi" , wynik_bmi)
+    elif wynik_bmi >=25.0 and wynik_bmi <=29.9:
+        print(f"Posiadasz nadwage")
+        print(f"Twoje bmi wynosi" , wynik_bmi)
+    else:
+        print("Jestes otyły ") 
+        print(f"Twoje bmi wynosi" , wynik_bmi)   
+
+wynik_bmi = bmi()
+sprawdz(wynik_bmi)
+
+
