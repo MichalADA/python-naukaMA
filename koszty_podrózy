@@ -1,0 +1,27 @@
+def pobierz_dane(prompt):
+    while True:
+        try:
+            val = float(input(prompt))
+            if val < 0:
+                raise ValueError("Wprowadzona wartość nie może być ujemna.")
+            return val
+        except ValueError as ve:
+            print("Niepoprawna wartość, spróbuj ponownie. Błąd: ", ve)
+
+dystans = pobierz_dane("Podaj ilość km do przejechania: ")
+zuzycie_paliwa = pobierz_dane("Podaj średnie zużycie paliwa na 100 km: ")
+cena_paliwa_za_litr = pobierz_dane("Podaj cenę paliwa za litr: ")
+dni_podrozy = pobierz_dane("Podaj liczbę dni podróży: ")
+koszt_noclegu = pobierz_dane("Podaj koszt noclegu za jeden dzień: ")
+
+def oblicz():
+    calkowity_koszt_paliwa = (dystans/100) * zuzycie_paliwa * cena_paliwa_za_litr
+    koszt_noclegow = koszt_noclegu * dni_podrozy
+    cal_koszt_podrozy = koszt_noclegow + calkowity_koszt_paliwa
+    return cal_koszt_podrozy , koszt_noclegow , calkowity_koszt_paliwa
+
+cal_koszt_podrozy, koszt_noclegow, calkowity_koszt_paliwa = oblicz()
+
+print(f"Całkowity koszt podróży wynosi: {cal_koszt_podrozy:.2f}")
+print(f"Koszt noclegów wynosi: {koszt_noclegow:.2f}")
+print(f"Całkowity koszt paliwa wynosi: {calkowity_koszt_paliwa:.2f}")
